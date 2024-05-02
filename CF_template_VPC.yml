@@ -10,14 +10,14 @@ Resources:
       EnableDnsHostnames: true
       Tags:
         - Key: Name
-          Value: 'SampleVPC'
+          Value: 'VPC1'
 
   InternetGateway:
     Type: 'AWS::EC2::InternetGateway'
     Properties:
       Tags:
         - Key: Name
-          Value: 'SampleInternetGateway'
+          Value: 'InternetGateway'
 
   AttachGateway:
     Type: 'AWS::EC2::VPCGatewayAttachment'
@@ -30,21 +30,21 @@ Resources:
     Properties:
       VpcId: !Ref VPC
       CidrBlock: '10.0.1.0/24'
-      AvailabilityZone: 'us-west-2a'
+      AvailabilityZone: 'us-east-1'
       MapPublicIpOnLaunch: true
       Tags:
         - Key: Name
-          Value: 'SamplePublicSubnet'
+          Value: 'PublicSubnet'
 
   PrivateSubnet:
     Type: 'AWS::EC2::Subnet'
     Properties:
       VpcId: !Ref VPC
       CidrBlock: '10.0.2.0/24'
-      AvailabilityZone: 'us-west-2b'
+      AvailabilityZone: 'us-east-1'
       Tags:
         - Key: Name
-          Value: 'SamplePrivateSubnet'
+          Value: 'PrivateSubnet'
 
   RouteTable:
     Type: 'AWS::EC2::RouteTable'
@@ -52,7 +52,7 @@ Resources:
       VpcId: !Ref VPC
       Tags:
         - Key: Name
-          Value: 'SampleRouteTable'
+          Value: 'RouteTable'
 
   PublicRoute:
     Type: 'AWS::EC2::Route'
@@ -83,8 +83,8 @@ Resources:
     Type: 'AWS::EC2::Instance'
     Properties:
       InstanceType: 't2.micro'
-      KeyName: 'YourKeyName'
-      ImageId: 'ami-09040d770ffe2224f' # depends on Region and AMI ID
+      KeyName: 'MyKeyName'
+      ImageId: 'ami-07caf09b362be10b8' # depends on Region and AMI ID
       NetworkInterfaces:
         - AssociatePublicIpAddress: false
           DeviceIndex: 0
