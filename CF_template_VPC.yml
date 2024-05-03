@@ -30,7 +30,7 @@ Resources:
     Properties:
       VpcId: !Ref VPC
       CidrBlock: '10.0.1.0/24'
-      AvailabilityZone: 'us-east-1'
+      AvailabilityZone: 'us-east-1a'
       MapPublicIpOnLaunch: true
       Tags:
         - Key: Name
@@ -41,7 +41,7 @@ Resources:
     Properties:
       VpcId: !Ref VPC
       CidrBlock: '10.0.2.0/24'
-      AvailabilityZone: 'us-east-1'
+      AvailabilityZone: 'us-east-1a'
       Tags:
         - Key: Name
           Value: 'PrivateSubnet'
@@ -83,7 +83,7 @@ Resources:
     Type: 'AWS::EC2::Instance'
     Properties:
       InstanceType: 't2.micro'
-      KeyName: 'MyKeyName'
+      KeyName: 'key_pair_vpc'
       ImageId: 'ami-07caf09b362be10b8' # depends on Region and AMI ID
       NetworkInterfaces:
         - AssociatePublicIpAddress: false
